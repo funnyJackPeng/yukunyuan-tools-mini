@@ -1,4 +1,4 @@
-// pages/index1/index1.ts
+// pages/user/user.ts
 Page({
 
   /**
