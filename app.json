@@ -1,7 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/join_application/join_application",
+    "pages/join_application_modification/join_application_modification"
   ],
   "window": {
     "navigationBarTextStyle": "black",

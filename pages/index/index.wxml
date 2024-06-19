@@ -1,5 +1,8 @@
 <van-grid direction="horizontal" column-num="1">
-  <van-grid-item text="文字" />
+  <van-grid-item text="加入申请"
+  link-type="navigateTo"
+  url="/pages/join_application/join_application"
+   />
   <van-grid-item text="文字" />
   <van-grid-item text="文字" />
 </van-grid>
