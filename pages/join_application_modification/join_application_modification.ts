@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    test:{
       test1:'1',
       test2:'2',
       test3:'3',
@@ -17,18 +16,13 @@ Page({
       test9:'9',
       test10:'10',
       test11:'11',
-      test12:'12'
-    },
-    keys:[],
+      test12:'12',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-      this.setData({
-        keys : Object.keys(this.data.test)
-      })
   },
 
 save(){
@@ -37,12 +31,5 @@ save(){
   })
   
   wx.navigateBack()
-},
-onChange(event){
-  this.setData({
-    test: event.detail
-  })
-console.log(this.data.test[e.currentTarget.dataset.name]);
 }
-
 })
