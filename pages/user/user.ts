@@ -1,4 +1,4 @@
-import {getLogin} from "../../api/request"
+import { getLogin } from "../../api/request"
 // pages/user/user.ts
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
@@ -7,56 +7,71 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {},
-    avatarUrl: defaultAvatarUrl,
+    userInfo: {
+      avatarUrl: defaultAvatarUrl,
+      nickName: ''
+    },
+    hasUserInfo: false
   },
-  onChooseAvatar(e) {
-    const { avatarUrl } = e.detail 
+  onChooseAvatar(e: any) {
+    const { avatarUrl } = e.detail
+    const { nickName } = this.data.userInfo
     this.setData({
-      avatarUrl,
+      "userInfo.avatarUrl": avatarUrl,
+      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
     })
+    if (this.data.hasUserInfo) {
+      wx.setStorageSync('userInfo', this.data.userInfo)
+      this.loginHandle()
+    }
   },
+  onInputChange(e: any) {
+    const nickName = e.detail.value
+    const { avatarUrl } = this.data.userInfo
+    this.setData({
+      "userInfo.nickName": nickName,
+      hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
+    })
+    if (this.data.hasUserInfo) {
+      wx.setStorageSync('userInfo', this.data.userInfo)
+      this.loginHandle()
+    }
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-      //   // 验证用户登录信息的状态是否处于有效期：增加一个接口，然后测试有效期
-      //   if(wx.getStorageSync('userInfo')){
-      //     this.setData({
-      //         userInfo:wx.getStorageSync('userInfo')
-      //     })
-      // }
+      // 验证用户登录信息的状态是否处于有效期
+      wx.checkSession({
+        success: () => {
+          //session_key 未过期，并且在本生命周期一直有效
+        this.setData({
+          userInfo: wx.getStorageSync('userInfo'),
+          hasUserInfo:true
+        })
+        },
+        fail :() => {
+          // session_key 已经失效，需要重新执行登录流程
+        this.setData({
+          hasUserInfo:false
+        })
+        }
+      })
   },
 
-//   getUserProfile() {
-//     wx.getUserProfile({
-//         desc: "展示用户信息",
-//         success: (res) => {
-//             this.setData({
-//                 userInfo:res.userInfo
-//             })
-//             // this.loginHandle()
-//             wx.setStorageSync('userInfo', res.userInfo)
-//         }
-//     })
-// },
-
-// loginHandle(){
-//     wx.login({
-//         success(response){
-//             // code:在发送给接口
-//             /**
-//              * 如果大家使用此登录接口，使用外网服务器的情况下，必须使用我的AppID
-//              * 如果大家使用此登录接口，使用自己的服务器的情况下，需要修改服务器
-//              */
-//             getLogin({jsCode:response.code}).then(res =>{
-//               console.log(res);
-//                 wx.setStorageSync('loginID', res.data.data)
-//             })
-//         },
-//         fail(err){
-//             console.log(err);
-//         }
-//     })
-// }
+  loginHandle() {
+    wx.login({
+      success(response) {
+        // code:在发送给接口
+        getLogin({ jsCode: response.code }).then(res => {
+          console.log(res);
+          wx.setStorageSync('loginID', res.data)
+        })
+      },
+      fail(err) {
+        console.log(err);
+      }
+    })
+  }
 })
