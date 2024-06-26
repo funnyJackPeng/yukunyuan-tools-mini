@@ -13,6 +13,18 @@ Page({
     },
     hasUserInfo: false
   },
+
+  // 成功登录后，可以直接从 storage 获取 openid, 此 id 可作为用户在后端的唯一标识
+  // test(){
+  //   const loginId = wx.getStorageSync('loginId')
+  //   console.log(loginId);
+    
+  //   getUserInfo(loginId.openid).then(res=>{
+  //     console.log(res);
+      
+  //   })
+  // },
+
   onChooseAvatar(e: any) {
     const { avatarUrl } = e.detail
     const { nickName } = this.data.userInfo
@@ -42,49 +54,46 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad() {
-    var hasUserInfo:boolean;
-    if (wx.getStorageSync('userInfo')) {
-      hasUserInfo = true
-    }else{
-      hasUserInfo = false
-    }
-
-    this.setData({
-      userInfo: wx.getStorageSync('userInfo'),
-      hasUserInfo:hasUserInfo
-    })
-    console.log(wx.getStorageSync('userInfo'));
-    
-    console.log(this.data.hasUserInfo)
-    
-      // // 验证用户登录信息的状态是否处于有效期
-      // wx.checkSession({
-      //   success: () => {
-      
-      //   console.log(wx.getUserProfile);
-
-      //     //session_key 未过期，并且在本生命周期一直有效
-      //   this.setData({
-      //     userInfo: wx.getStorageSync('userInfo'),
-      //     hasUserInfo:true
-      //   })
-      //   },
-      //   fail :() => {
-      //     // session_key 已经失效，需要重新执行登录流程
-      //   this.setData({
-      //     hasUserInfo:false
-      //   })
-      //   }
-      // })
+      // 验证用户登录信息的状态是否处于有效期
+      wx.checkSession({
+        success: () => {
+          //session_key 未过期，并且在本生命周期一直有效
+          var hasUserInfo:boolean;
+          if (wx.getStorageSync('userInfo')) {
+            hasUserInfo = true
+          }else{
+            hasUserInfo = false
+          }
+        this.setData({
+          userInfo: wx.getStorageSync('userInfo'),
+          hasUserInfo:hasUserInfo
+        })
+        },
+        fail :() => {
+          // session_key 已经失效，需要重新执行登录流程
+          wx.removeStorageSync('userInfo')
+        this.setData({
+          userInfo: {
+            avatarUrl: defaultAvatarUrl,
+            nickName: ''
+          },
+          hasUserInfo:false
+        })
+        }
+      })
   },
 
   loginHandle() {
+    const userName = this.data.userInfo.nickName
     wx.login({
       success(response) {
         // code:在发送给接口
-        getLogin({ jsCode: response.code }).then(res => {
+        getLogin({
+           jsCode: response.code,
+           userName:userName
+          }).then(res => {
           console.log(res);
-          wx.setStorageSync('loginID', res.data)
+          wx.setStorageSync('loginId', res.data)
         })
       },
       fail(err) {
@@ -93,9 +102,3 @@ Page({
     })
   }
 })
-/**
- * openid: "ot2jS5QZFeJm-ovWZc7_Xa3krgf4"
- * openid: "ot2jS5QZFeJm-ovWZc7_Xa3krgf4"
-session_key: "1gF/JGU53y2XF9T0Hq16fQ=="
-session_key: "Xq5XKtERwLhqfP8uDiEhYg=="
- */
