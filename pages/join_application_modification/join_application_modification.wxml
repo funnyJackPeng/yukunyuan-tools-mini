@@ -1,70 +1,53 @@
 <view>
-<text>收件人：gyd2345@163.com
-邮件主题：( {{ test1 }} ) 推（ {{ test2 }} ）加（ {{ test1 }} )
+<text>
+收件人：gyd2345@163.com
+邮件主题：( {{ referrerNumber }} ) 推（ {{ ownNumber }} ）加（ {{ amount }} )
 邮件正文：
 诚信共赢社区管理处：
-我姓（ {{ test4 }} ），（ {{ test5 }} ）性，昵称（ {{ test6 }} ）；居住地（ {{ test7 }} ）。现申请加入诚信共赢社区，特声明如下：
+我姓（ {{ surname }} ），（ {{ gender }} ）性，昵称（ {{ nickName }} ）；居住地（ {{ address }} ）。现申请加入诚信共赢社区，特声明如下：
 1.认同MMM思想理念，遵守诚信共赢社区相关规定。
 2.拥护诚信共赢社区指导方针：“无偿援助，互惠和仁爱”。
 3.明白“参与诚信共赢社区，本身就是愿意提供无偿援助的明确表示”，认同社区共识“参与社区等于自愿捐助”。
 4.承诺闲钱参与，不动用关键资金，绝不借贷参与。
 5.承诺不利用诚信共赢平台从事任何政治、宗教、黄赌毒及其他犯罪活动；不攻击、诽谤任何国家、政府、政党、组织、企业或个人。
 6.阅读了警告，完全了解所有风险，决定参与诚信共赢社区。本人心智健全，具有完全民事行为能力，能对自己的行为完全负责。
-申请人：（{{ test8 }} ）
-推荐人：（ {{ test9 }} ）
-（ {{ test10 }} ）年（ {{ test11 }} ）月（ {{ test12 }} ）日
+申请人：（{{ ownNumber }} ）
+推荐人：（ {{ referrerNumber }} ）
+{{date}}
 </text>
 <van-divider /> 
 <van-cell-group>
   <van-field
-    label="test1"
-    model:value="{{ test1 }}"
+    label="推荐人编号: "
+    model:value="{{ referrerNumber }}"
   />
   <van-field
-    label="test2"
-    model:value="{{ test2 }}"
+    label="自己的编号: "
+    model:value="{{ ownNumber }}"
   />
   <van-field
-    label="test3"
-    model:value="{{ test3 }}"
+    label="金额: "
+    type="number"
+    model:value="{{ amount }}"
   />
   <van-field
-    label="test4"
-    model:value="{{ test4 }}"
+    label="姓: "
+    model:value="{{ surname }}"
   />
   <van-field
-    label="test5"
-    model:value="{{ test5 }}"
+    label="性别: "
+    model:value="{{ gender }}"
   />
   <van-field
-    label="test6"
-    model:value="{{ test6 }}"
+    label="昵称: "
+    model:value="{{ nickName }}"
   />
   <van-field
-    label="test7"
-    model:value="{{ test7 }}"
+    label="居住地: "
+    model:value="{{ address }}"
   />
-  <van-field
-    label="test8"
-    model:value="{{ test8 }}"
-  />
-  <van-field
-    label="test9"
-    model:value="{{ test9 }}"
-  />
-  <van-field
-    label="test10"
-    model:value="{{ test10 }}"
-  />
-  <van-field
-    label="test11"
-    model:value="{{ test11 }}"
-  />
-  <van-field
-    label="test12"
-    model:value="{{ test12 }}"
-  />
-  
 </van-cell-group>
   <van-button type="primary" round='true' bindtap='save'>保存</van-button>
 </view>
+
+<van-toast id="van-toast" />

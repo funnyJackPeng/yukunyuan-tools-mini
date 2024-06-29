@@ -91,8 +91,7 @@ Page({
         getLogin({
            jsCode: response.code,
            userName:userName
-          }).then(res => {
-          console.log(res);
+          }).then((res:any) => {
           wx.setStorageSync('loginId', res.data)
         })
       },

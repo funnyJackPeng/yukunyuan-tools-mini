@@ -1,4 +1,8 @@
 {
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index"
+  },
   "pages": [
     "pages/index/index",
     "pages/user/user",

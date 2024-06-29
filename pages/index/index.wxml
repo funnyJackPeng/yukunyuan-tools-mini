@@ -6,3 +6,5 @@
   <van-grid-item text="文字" />
   <van-grid-item text="文字" />
 </van-grid>
+
+<van-toast id="van-toast" />

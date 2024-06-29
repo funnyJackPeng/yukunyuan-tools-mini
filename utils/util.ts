@@ -1,3 +1,4 @@
+
 export const formatTime = (date: Date) => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -16,4 +17,30 @@ export const formatTime = (date: Date) => {
 const formatNumber = (n: number) => {
   const s = n.toString()
   return s[1] ? s : '0' + s
+}
+
+
+function generateJoinApplicationDataObject(
+  data:{
+    referrerNumber: string,
+    ownNumber: string,
+    amount: number,
+    surname: string,
+    gender:string,
+    nickName: string,
+    address: string,
+  }){
+  return {
+    referrerNumber: data.referrerNumber,
+    ownNumber: data.ownNumber,
+    amount: data.amount,
+    surname:data.surname,
+    gender: data.gender,
+    nickName: data.nickName,
+    address: data.address,
+  }
+}
+
+export{
+  generateJoinApplicationDataObject
 }
