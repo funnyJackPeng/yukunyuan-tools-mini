@@ -1,13 +1,17 @@
 {
   "usingComponents": {
+    "van-field": "@vant/weapp/field/index",
     "van-button": "@vant/weapp/button/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index"
   },
   "pages": [
     "pages/index/index",
     "pages/user/user",
     "pages/join_application/join_application",
-    "pages/join_application_modification/join_application_modification"
+    "pages/join_application_modification/join_application_modification",
+    "pages/bind_email/bind_email"
   ],
   "window": {
     "navigationBarTextStyle": "black",

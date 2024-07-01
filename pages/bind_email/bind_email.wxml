@@ -1,0 +1,14 @@
+<view>
+  <van-field
+    label="邮箱: "
+    placeholder="请输入邮箱"
+    model:value="{{ localPart }}"
+  />
+  <view class="domain-selector">
+    <van-dropdown-menu>
+  <van-dropdown-item value="{{ emailCompany }}" options="{{ emailOption }}" />
+  </van-dropdown-menu>
+      </view>
+</view>
+
+<van-button type="primary" round='true' bindtap='save'>保存</van-button>

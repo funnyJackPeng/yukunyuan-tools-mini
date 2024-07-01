@@ -64,7 +64,6 @@ Page({
       promise =  modifyJoinApplication(generateJoinApplicationDataObject(this.data))
     }
     promise.then((res:any)=>{
-      console.log(res);
       switch(res.statusCode){
         case 201:
         case 200:{

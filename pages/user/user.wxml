@@ -1,16 +1,17 @@
-<!-- <view class="user-container">
-  <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-  <image class="avatar" src="{{avatarUrl}}"></image>
-</button> 
-<input type="nickname" class="weui-input" placeholder="请输入昵称"/>
-</view> -->
-
-<view class="header">
-  <view wx:if="{{ hasUserInfo }}">
+<view class="user-container" wx:if="{{ hasUserInfo && hasLogin }}">
+  <view class="header" >
     <image mode="widthFix" src="{{ userInfo.avatarUrl }}"></image>
     <text>{{ userInfo.nickName }}</text>
-  </view>
-  <view wx:else class="userinfo">
+</view>
+<view>
+  <van-grid style="margin-top: 10px;">
+  <van-grid-item url="/pages/bind_email/bind_email" icon="/images/email.png" text="绑定邮箱" />
+</van-grid>
+</view>
+</view>
+
+<!-- login part -->
+<view wx:else class="userinfo">
     <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
       <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
     </button>
@@ -19,5 +20,4 @@
       <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
     </view>
   </view>
-</view>
 <van-toast id="van-toast" />
