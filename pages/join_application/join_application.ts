@@ -1,4 +1,4 @@
-import { getJoinApplication } from "../../api/request"
+import { getJoinApplication,sendJoinApplicationEmail } from "../../api/request"
 import { generateJoinApplicationDataObject } from "../../utils/util"
 import Toast from '@vant/weapp/toast/toast';
 
@@ -43,7 +43,24 @@ Page({
   },
 
 sendEmail(){
-  Toast.success("发送成功");
+  sendJoinApplicationEmail().then((res:any)=>{
+    console.log(res);
+    
+    switch(res.statusCode){
+      case 200:{
+        Toast.success("发送成功");
+        break;
+      };
+      case 400:{
+        Toast.fail(res.data.message)
+        break;
+      };
+      default:{
+        Toast.fail("系统错误！");
+        break;
+      }
+    }
+  })
 },
 
 modify(){

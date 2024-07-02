@@ -1,5 +1,5 @@
 import Toast from '@vant/weapp/toast/toast';
-import { getLogin } from "../../api/request"
+import { login } from "../../api/request"
 // pages/user/user.ts
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 
@@ -86,7 +86,7 @@ Page({
     wx.login({
       success(response) {
         // code:在发送给接口
-        getLogin({
+        login({
           jsCode: response.code,
           userName: userName
         }).then((res: any) => {

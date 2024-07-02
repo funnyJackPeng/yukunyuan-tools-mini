@@ -1,14 +1,22 @@
-<view>
-  <van-field
+<view class="container">
+  <van-cell-group>
+    <van-field
     label="邮箱: "
     placeholder="请输入邮箱"
     model:value="{{ localPart }}"
   />
-  <view class="domain-selector">
-    <van-dropdown-menu>
-  <van-dropdown-item value="{{ emailCompany }}" options="{{ emailOption }}" />
+  <van-dropdown-menu>
+  <van-dropdown-item model:value="{{ emailCompany }}" options="{{ emailOption }}" />
   </van-dropdown-menu>
-      </view>
+  </van-cell-group>
+ 
+</view>
+<view class="container">
+  <van-field
+    label="邮箱授权码: "
+    placeholder="请输入授权码"
+    model:value="{{ emailAuthCode }}"
+  />
 </view>
 
 <van-button type="primary" round='true' bindtap='save'>保存</van-button>

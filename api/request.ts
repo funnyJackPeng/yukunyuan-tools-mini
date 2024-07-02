@@ -1,25 +1,33 @@
 import { request,loginRequest } from "../utils/request"
-import {baseUrl,login,joinApplication} from "./base"
+import {baseUrl, userInfoPath, loginPath, joinApplicationPath, sendJoinApplicationEmailPath} from "./base"
 
-function getLogin(data:object){
-  return loginRequest(baseUrl+login, "POST",data)
+function login(data:object){
+  return loginRequest(baseUrl+loginPath, "POST",data)
+}
+
+function modifyUserInfo(data:object){
+  return request(baseUrl+userInfoPath,"PUT",data)
 }
 
 function getJoinApplication(){
-  return request(baseUrl+joinApplication,"GET",undefined)
+  return request(baseUrl+joinApplicationPath,"GET",undefined)
 }
 
 function createJoinApplication(data:object){
-  return request(baseUrl+joinApplication,"POST",data)
+  return request(baseUrl+joinApplicationPath,"POST",data)
 }
 
 function modifyJoinApplication(data:object){
-  return request(baseUrl+joinApplication,"PUT",data)
+  return request(baseUrl+joinApplicationPath,"PUT",data)
 }
-
+function sendJoinApplicationEmail(){
+  return request(baseUrl+sendJoinApplicationEmailPath,"POST",undefined)
+}
 export {
-  getLogin,
+  login as getLogin,
+  modifyUserInfo,
   getJoinApplication,
   createJoinApplication,
-  modifyJoinApplication
+  modifyJoinApplication,
+  sendJoinApplicationEmail
 }
