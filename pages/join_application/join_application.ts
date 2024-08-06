@@ -20,7 +20,9 @@ Page({
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-    })
+    }),
+    // 组件变量
+    showDialog:false
   },
 
   onShow() {
@@ -40,6 +42,12 @@ Page({
           }
         }
       })
+  },
+
+  showDialog(){
+    this.setData({
+      showDialog:true
+    })
   },
 
 sendEmail(){

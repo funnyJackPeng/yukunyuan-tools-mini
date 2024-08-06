@@ -39,8 +39,5 @@ save(){
       }
     }
   })
-  console.log(this.data.emailAuthCode);
-  console.log(this.data.localPart);
-  console.log(this.data.emailCompany);
 }
 })
