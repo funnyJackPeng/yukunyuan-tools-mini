@@ -1,0 +1,27 @@
+<view>
+  <van-button type="primary" round='true' bindtap="modify" >修改</van-button>
+  <text>
+收件人：chengxin202112@163.com
+邮件主题：{{ ownNumber }}申请捐助{{ amount }}
+邮件正文：
+
+诚信共赢社区管理处：
+本人自愿申请捐助{{ amount }}元。
+本人阅读了警告，完全了解所有风险，决定参与诚信共赢社区。
+本人心智健全，具有完全民事行为能力，能对自己的行为完全负责。
+申请人：{{ ownNumber }}
+推荐人：{{ referrerNumber }}
+{{date}}
+</text>
+<van-button type="primary" round='true' bind:click="showDialog">发送</van-button>
+<van-dialog
+ id="van-dialog"
+ message="请再次核对邮件内容，是否确定发送？"
+ show="{{ showDialog }}"
+ showCancelButton="true"
+ confirmButtonText="确认发送"
+ cancelButtonText="需要修改"
+ bind:confirm="sendEmail"
+ />
+</view>
+<van-toast id="van-toast" />

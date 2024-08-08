@@ -3,6 +3,10 @@
   link-type="navigateTo"
   url="/pages/join_application/join_application"
    />
+   <van-grid-item text="捐助申请"
+  link-type="navigateTo"
+  url="/pages/donation_application/donation_application"
+   />
   <van-grid-item text="文字" />
   <van-grid-item text="文字" />
 </van-grid>

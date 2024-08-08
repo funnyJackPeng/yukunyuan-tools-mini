@@ -1,5 +1,5 @@
 import { request,loginRequest } from "../utils/request"
-import {baseUrl, userInfoPath, loginPath, joinApplicationPath, sendJoinApplicationEmailPath} from "./base"
+import {baseUrl, userInfoPath, loginPath, joinApplicationPath, donationApplicationPath,sendJoinApplicationEmailPath} from "./base"
 
 function login(data:object){
   return loginRequest(baseUrl+loginPath, "POST",data)
@@ -20,6 +20,19 @@ function createJoinApplication(data:object){
 function modifyJoinApplication(data:object){
   return request(baseUrl+joinApplicationPath,"PUT",data)
 }
+
+function getDonationApplication(){
+  return request(baseUrl+donationApplicationPath,"GET",undefined)
+}
+
+function createDonationApplication(data:object){
+  return request(baseUrl+donationApplicationPath,"POST",data)
+}
+
+function modifyDonationApplication(data:object){
+  return request(baseUrl+donationApplicationPath,"PUT",data)
+}
+
 function sendJoinApplicationEmail(){
   return request(baseUrl+sendJoinApplicationEmailPath,"POST",undefined)
 }
@@ -29,5 +42,8 @@ export {
   getJoinApplication,
   createJoinApplication,
   modifyJoinApplication,
+  getDonationApplication,
+  createDonationApplication,
+  modifyDonationApplication,
   sendJoinApplicationEmail
 }

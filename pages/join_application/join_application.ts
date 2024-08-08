@@ -73,7 +73,7 @@ sendEmail(){
 
 modify(){
   wx.navigateTo({
-    url : '/pages/join_application_modification/join_application_modification'
+    url : '/pages/join_application/join_application_modification'
   })
 }
 })

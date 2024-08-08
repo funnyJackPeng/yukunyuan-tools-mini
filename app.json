@@ -11,7 +11,9 @@
     "pages/index/index",
     "pages/user/user",
     "pages/join_application/join_application",
-    "pages/join_application_modification/join_application_modification",
+    "pages/join_application/join_application_modification",
+    "pages/donation_application/donation_application",
+    "pages/donation_application/donation_application_modification",
     "pages/bind_email/bind_email"
   ],
   "window": {

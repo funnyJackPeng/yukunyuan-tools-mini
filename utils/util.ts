@@ -19,7 +19,6 @@ const formatNumber = (n: number) => {
   return s[1] ? s : '0' + s
 }
 
-
 function generateJoinApplicationDataObject(
   data:{
     referrerNumber: string,
@@ -41,6 +40,20 @@ function generateJoinApplicationDataObject(
   }
 }
 
+function generateDonationApplicationDataObject(
+  data:{
+    referrerNumber: string,
+    ownNumber: string,
+    amount: number
+  }){
+  return {
+    referrerNumber: data.referrerNumber,
+    ownNumber: data.ownNumber,
+    amount: data.amount,
+  }
+}
+
 export{
-  generateJoinApplicationDataObject
+  generateJoinApplicationDataObject,
+  generateDonationApplicationDataObject
 }

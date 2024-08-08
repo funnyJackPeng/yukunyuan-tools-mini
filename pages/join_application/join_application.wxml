@@ -4,6 +4,7 @@
     收件人：gyd2345@163.com
 邮件主题：{{ referrerNumber }}推{{ ownNumber }}加{{ amount }}
 邮件正文：
+
 诚信共赢社区管理处：
 我姓{{ surname }}，{{ gender }}性，昵称{{ nickName }}；居住地{{ address }}。现申请加入诚信共赢社区，特声明如下：
 1.认同MMM思想理念，遵守诚信共赢社区相关规定。
