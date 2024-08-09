@@ -1,4 +1,4 @@
-import { getDonationApplication } from "../../api/request"
+import { getDonationApplication, sendDonationApplicationEmail } from "../../api/request"
 import { generateDonationApplicationDataObject } from "../../utils/util"
 import Toast from '@vant/weapp/toast/toast';
 
@@ -43,6 +43,27 @@ Page({
 showDialog(){
   this.setData({
     showDialog:true
+  })
+},
+
+sendEmail(){
+  sendDonationApplicationEmail().then((res:any)=>{
+    console.log(res);
+    
+    switch(res.statusCode){
+      case 200:{
+        Toast.success("发送成功");
+        break;
+      };
+      case 400:{
+        Toast.fail(res.data.message)
+        break;
+      };
+      default:{
+        Toast.fail("系统错误！");
+        break;
+      }
+    }
   })
 },
 

@@ -1,5 +1,5 @@
 import { request,loginRequest } from "../utils/request"
-import {baseUrl, userInfoPath, loginPath, joinApplicationPath, donationApplicationPath,sendJoinApplicationEmailPath} from "./base"
+import {baseUrl, userInfoPath, loginPath, joinApplicationPath, donationApplicationPath,sendJoinApplicationEmailPath, sendDonationApplicationEmailPath} from "./base"
 
 function login(data:object){
   return loginRequest(baseUrl+loginPath, "POST",data)
@@ -36,6 +36,10 @@ function modifyDonationApplication(data:object){
 function sendJoinApplicationEmail(){
   return request(baseUrl+sendJoinApplicationEmailPath,"POST",undefined)
 }
+
+function sendDonationApplicationEmail(){
+  return request(baseUrl+sendDonationApplicationEmailPath,"POST",undefined)
+}
 export {
   login as getLogin,
   modifyUserInfo,
@@ -45,5 +49,6 @@ export {
   getDonationApplication,
   createDonationApplication,
   modifyDonationApplication,
-  sendJoinApplicationEmail
+  sendJoinApplicationEmail,
+  sendDonationApplicationEmail
 }

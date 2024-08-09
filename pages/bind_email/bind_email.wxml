@@ -2,7 +2,7 @@
   <van-cell-group>
     <van-field
     label="邮箱: "
-    placeholder="请输入邮箱"
+    placeholder="请输入邮箱(@前的部分)"
     model:value="{{ localPart }}"
   />
   <van-dropdown-menu>
